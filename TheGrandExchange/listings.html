@@ -7,53 +7,42 @@
 
         <script>
             // define the createListing function that takes a first name and last name as parameters
-            // var getListings = ()=>{
-            //     // instantiate a headers object
-            //     var myHeaders = new Headers();
-            //     // add content type header to object
-            //     myHeaders.append("Content-Type", "application/json");
-            //     // using built in JSON utility package turn object to string and store in a variable
-            //     //var raw = JSON.stringify({"title": title, "description": description, "email": email, "number": phoneNumber});
-            //     // create a JSON object with parameters for API call and store in a variable
-            //     var requestOptions = {
-            //         method: 'GET',
-            //         headers: myHeaders,
-            //         redirect: 'follow'
-            //     };
-            //     // make API call with parameters and use promises to get response
-            //     fetch("", requestOptions)
-            //     .then(response => response.text())
-            //     .then(result => {
-                    
+            var getListings = async () => {
+                // instantiate a headers object
+                var myHeaders = new Headers();
+                // add content type header to object
+                myHeaders.append("Content-Type", "application/json");
+                // create a JSON object with parameters for API call and store in a variable
+                var requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    redirect: 'follow'
+                };
+                // make API call with parameters and use promises to get response
+                result = await fetch("https://a90jbgdg3a.execute-api.us-east-1.amazonaws.com/dev", requestOptions);
+                return result;
+            }
 
-            //     })
-            //     .catch(error => console.log('error', error));
-            // }
-
-            var printListings = () => {
-                //json = JSON.parse(result).body;
+            var printListings = async () => {
+                // json = JSON.parse(result).body;
                 var table = document.getElementById('listings'),
                     _tr_ = document.createElement('tr'),
                     _td_ = document.createElement('td');
-                    dummydata = [{"title": "title",
-                        "description": "test description",
-                        "email": "test@test.com",
-                        "number": "555-555-5555"},
-                        {"title": "2nd title",
-                        "description": "testes description",
-                        "email": "test@test3.com",
-                        "number": "555-558-5555"}];
+                    const response = await getListings();
+                    const json = await response.json();
+                    listArray = json.body;
 
-                    for (var i = 0; i < dummydata.length; ++i) {  //hardcoded with 4 headers
+                    for (var i = 0; i < listArray.length; ++i) {  //hardcoded with 4 headers
+                        var obj = JSON.parse(listArray[i]);
                         var tr = _tr_.cloneNode(false);
                         var td1 = _td_.cloneNode(false),
                             td2 = _td_.cloneNode(false),
                             td3 = _td_.cloneNode(false),
                             td4 = _td_.cloneNode(false);
-                            td1.appendChild(document.createTextNode(dummydata[i].title || ''));
-                            td2.appendChild(document.createTextNode(dummydata[i].description || ''));
-                            td3.appendChild(document.createTextNode(dummydata[i].email || ''));
-                            td4.appendChild(document.createTextNode(dummydata[i].number || ''));
+                            td1.appendChild(document.createTextNode(obj['title'] || ''));
+                            td2.appendChild(document.createTextNode(obj['description'] || ''));
+                            td3.appendChild(document.createTextNode(obj['email'] || ''));
+                            td4.appendChild(document.createTextNode(obj['number'] || ''));
                             tr.appendChild(td1);
                             tr.appendChild(td2);
                             tr.appendChild(td3);
@@ -64,7 +53,6 @@
 
             }
 
-            //printListings();
         </script>
 
 
