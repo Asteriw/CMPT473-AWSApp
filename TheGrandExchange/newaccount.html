@@ -13,33 +13,56 @@
   <div class="col-3 col-s-3 menu">
     <ul>
       <li><a href='index.html'> Home </a> </li>
-      <li><a href='listing.html'> Listings </a> </li>
+      <li><a href='about.html'> About </a> </li>
+      <li><a href='contact.html'> Contact </a> </li>
       <li><a href='login.html'> User Login </a> </li>
+      <li><a href='listings.html'> Listings </a> </li>
     </ul>
   </div>
+  
+  <script>
+        // define the callAPI function that takes a first name and last name as parameters
+        var callAPI = (firstName,lastName)=>{
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("https://tvjjxdowu0.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+  </script>
 
   <div class="col-6 col-s-9">
-    <h1> User login </h1>
-
+    <h1> New Account </h1>
      <form>
      <table>
      <tr>
         <td><label> First Name: </label></td><td> <input type="text" id="username"></td> 
      </tr>
      <tr>
-        <td><label> Last Name: </label></td><td> <input type="password" id="password" minlength="10"></td>
+        <td><label> Last Name: </label></td><td> <input type="password" id="password"></td>
      </tr>
      <tr>
         <td>&nbsp;</td><td> <input type="checkbox" onclick="ShowPassword()">Show Password</td>
      </tr>
         <!-- set button onClick method to call the function you want to handle this! -->
      <tr>
-        <td><button type="button" onclick="callAPI(document.getElementById('username').value, document.getElementById('password').value)"> Login </button></td><td>&nbsp;</td>   
+        <td><button type="button" onclick="callAPI(document.getElementById('username').value, document.getElementById('password').value)"> Create </button></td><td>&nbsp;</td>   
      </tr>
      </form>
   </table>
-  <p class="small"> Forgot your password? Click <a class="body" href="">here</a> to reset.</p>
-  <p class="small"> You do not have an account? Click <a class="body" href="newaccount.html">here</a> to register. </p>
 
   </div>
 

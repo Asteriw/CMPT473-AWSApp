@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Project - Group (?): Project Title </title>
+<title> Project - Group 6: The Grand Exchange </title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
 <div class="header">
-<h1>Project Title</h1>
+<h1>The Grand Exchange</h1>
 </div>
 
 <div class="row">
@@ -16,30 +16,32 @@
       <li><a href='about.html'> About </a> </li>
       <li><a href='contact.html'> Contact </a> </li>
       <li><a href='login.html'> User Login </a> </li>
+      <li><a href='listings.html'> Listings </a> </li>
     </ul>
   </div>
 
   <div class="col-6 col-s-9">
     <h1> User login </h1>
+
      <form>
      <table>
      <tr>
-        <td><label> Username: </label></td><td> <input type="text" id="username"></td> 
+        <td><label> First Name: </label></td><td> <input type="text" id="username"></td> 
      </tr>
      <tr>
-        <td><label> Password:</label></td><td> <input type="password" id="password" minlength="10"></td>
+        <td><label> Last Name: </label></td><td> <input type="password" id="password" minlength="10"></td>
      </tr>
      <tr>
         <td>&nbsp;</td><td> <input type="checkbox" onclick="ShowPassword()">Show Password</td>
      </tr>
         <!-- set button onClick method to call the function you want to handle this! -->
      <tr>
-        <td><button type="button" onclick="location.href = './listings.html';"> Login </button></td><td>&nbsp;</td>   
+        <td><button type="button" onclick="callAPI(document.getElementById('username').value, document.getElementById('password').value)"> Login </button></td><td>&nbsp;</td>   
      </tr>
      </form>
   </table>
   <p class="small"> Forgot your password? Click <a class="body" href="">here</a> to reset.</p>
-  <p class="small"> You do not have an account? Click <a class="body" href="">here</a> to register. </p>
+  <p class="small"> You do not have an account? Click <a class="body" href="newaccount.html">here</a> to register. </p>
 
   </div>
 
