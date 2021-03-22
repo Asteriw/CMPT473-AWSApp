@@ -1,5 +1,6 @@
 <!DOCTYPE html>
     <html>
+        <link rel="stylesheet" type="text/css" href="style.css" />
         <head>
             <meta charset="UTF-8">
             <title>Listings</title>
@@ -24,28 +25,51 @@
                 // make API call with parameters and use promises to get response
                 fetch("YOUR-API-INVOKE-URL", requestOptions)
                 .then(response => response.text())
-                .then(result => alert(JSON.parse(result).body))
+                .then(result => alert("Listing Successfully Changed"))
                 .catch(error => console.log('error', error));
             }
         </script>
 
-        <body>
-            <h1> Create a Listing </h1>
-            <form>
-                <label>Title :</label>
-                <input type="text" id="title" required>
-                <label>Description :</label>
-                <input type="text" id="description" required>
-                <label>Email :</label>
-                <input type="text" id="email" required>
-                <label>Phone Number :</label>
-                <input type="text" id="phone-number" required>
-                <!-- set button onClick method to call function we defined passing input values as parameters -->
-                <button type="button" onclick="createListing(
-                    document.getElementById('title').value, 
-                    document.getElementById('description').value, 
-                    document.getElementById('email').value, 
-                    document.getElementById('phone-number').value);">Create Listing</button>
-            </form>
-        </body>
+<div class="header">
+    <h1> Add a Listing </h1>
+</div>
+
+<div class="row">
+    <div class="col-3 col-s-3 menu">
+        <ul>
+            <li><a href='index.html'> Home </a> </li>
+            <li><a href='about.html'> About </a> </li>
+            <li><a href='contact.html'> Contact </a> </li>
+            <li><a href='login.html'> User Login </a> </li>
+            <li><a href='listings.html'> Listings </a> </li>
+        </ul>
+    </div>
+
+
+        <h1> Create a Listing </h1>
+        <form>
+            <label>Title :</label>
+            <input type="text" id="title" required>
+            <label>Description :</label>
+            <input type="text" id="description" required>
+            <label>Email :</label>
+            <input type="text" id="email" required>
+            <label>Phone Number :</label>
+            <input type="text" id="phone-number" required>
+            <!-- set button onClick method to call function we defined passing input values as parameters -->
+            <button type="button" onclick="createListing(
+                document.getElementById('title').value, 
+                document.getElementById('description').value, 
+                document.getElementById('email').value, 
+                document.getElementById('phone-number').value);">Create Listing</button>
+        </form>
+
+</div>
+
+<div class="footer">
+    <p> The provided CSS responds to different window sizes and device sizes. While you are not required to work on the asthetics of your project for grade, you may want to improve it if you are trying to build a real web system. </p>
+</div>
+</body>
+
     </html>
+
