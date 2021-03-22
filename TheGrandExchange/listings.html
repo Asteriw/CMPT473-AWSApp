@@ -1,51 +1,113 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <meta charset="UTF-8">
-            <title>Listings</title>
+            <title> Project - Group (?): Project Title </title>
+            <link rel="stylesheet" type="text/css" href="style.css" />
         </head>
 
         <script>
             // define the createListing function that takes a first name and last name as parameters
-            var createListing = (title, description, email, phoneNumber)=>{
-                // instantiate a headers object
-                var myHeaders = new Headers();
-                // add content type header to object
-                myHeaders.append("Content-Type", "application/json");
-                // using built in JSON utility package turn object to string and store in a variable
-                var raw = JSON.stringify({"title": title, "description": description, "email": email, "number": phoneNumber});
-                // create a JSON object with parameters for API call and store in a variable
-                var requestOptions = {
-                    method: 'POST',
-                    headers: myHeaders,
-                    body: raw,
-                    redirect: 'follow'
-                };
-                // make API call with parameters and use promises to get response
-                fetch("YOUR-API-INVOKE-URL", requestOptions)
-                .then(response => response.text())
-                .then(result => alert(JSON.parse(result).body))
-                .catch(error => console.log('error', error));
+            // var getListings = ()=>{
+            //     // instantiate a headers object
+            //     var myHeaders = new Headers();
+            //     // add content type header to object
+            //     myHeaders.append("Content-Type", "application/json");
+            //     // using built in JSON utility package turn object to string and store in a variable
+            //     //var raw = JSON.stringify({"title": title, "description": description, "email": email, "number": phoneNumber});
+            //     // create a JSON object with parameters for API call and store in a variable
+            //     var requestOptions = {
+            //         method: 'GET',
+            //         headers: myHeaders,
+            //         redirect: 'follow'
+            //     };
+            //     // make API call with parameters and use promises to get response
+            //     fetch("", requestOptions)
+            //     .then(response => response.text())
+            //     .then(result => {
+                    
+
+            //     })
+            //     .catch(error => console.log('error', error));
+            // }
+
+            var printListings = () => {
+                //json = JSON.parse(result).body;
+                var table = document.getElementById('listings'),
+                    _tr_ = document.createElement('tr'),
+                    _td_ = document.createElement('td');
+                    dummydata = [{"title": "title",
+                        "description": "test description",
+                        "email": "test@test.com",
+                        "number": "555-555-5555"},
+                        {"title": "2nd title",
+                        "description": "testes description",
+                        "email": "test@test3.com",
+                        "number": "555-558-5555"}];
+
+                    for (var i = 0; i < dummydata.length; ++i) {  //hardcoded with 4 headers
+                        var tr = _tr_.cloneNode(false);
+                        var td1 = _td_.cloneNode(false),
+                            td2 = _td_.cloneNode(false),
+                            td3 = _td_.cloneNode(false),
+                            td4 = _td_.cloneNode(false);
+                            td1.appendChild(document.createTextNode(dummydata[i].title || ''));
+                            td2.appendChild(document.createTextNode(dummydata[i].description || ''));
+                            td3.appendChild(document.createTextNode(dummydata[i].email || ''));
+                            td4.appendChild(document.createTextNode(dummydata[i].number || ''));
+                            tr.appendChild(td1);
+                            tr.appendChild(td2);
+                            tr.appendChild(td3);
+                            tr.appendChild(td4);
+                        table.appendChild(tr);
+                    }
+                    return table;
+
             }
+
+            //printListings();
         </script>
 
-        <body>
-            <h1> Create a Listing </h1>
-            <form>
-                <label>Title :</label>
-                <input type="text" id="title" required>
-                <label>Description :</label>
-                <input type="text" id="description" required>
-                <label>Email :</label>
-                <input type="text" id="email" required>
-                <label>Phone Number :</label>
-                <input type="text" id="phone-number" required>
-                <!-- set button onClick method to call function we defined passing input values as parameters -->
-                <button type="button" onclick="createListing(
-                    document.getElementById('title').value, 
-                    document.getElementById('description').value, 
-                    document.getElementById('email').value, 
-                    document.getElementById('phone-number').value);">Create Listing</button>
-            </form>
+
+        <body onload="printListings()">
+            <div class="header">
+                <h1> Create a Listing </h1>
+            </div>
+
+            <div class="row">
+                <div class="col-3 col-s-3 menu">
+                    <ul>
+                        <li><a href='index.html'> Home </a> </li>
+                        <li><a href='about.html'> About </a> </li>
+                        <li><a href='contact.html'> Contact </a> </li>
+                        <li><a href='login.html'> User Login </a> </li>
+                    </ul>
+                </div>
+            
+
+                <div class="col-6 col-s-9">
+                    <table id="listings">
+                        <a href="getListings">Create Listing</a>
+                        <tr>
+                            <th>
+                                title
+                            </th>
+                            <th>
+                                description
+                            </th>
+                            <th>
+                                email
+                            </th>
+                            <th>
+                                number
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p> The provided CSS responds to different window sizes and device sizes. While you are not required to work on the asthetics of your project for grade, you may want to improve it if you are trying to build a real web system. </p>
+            </div>
         </body>
+
     </html>

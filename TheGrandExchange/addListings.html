@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Listings</title>
+        </head>
+
+        <script>
+            // define the createListing function that takes a first name and last name as parameters
+            var createListing = (title, description, email, phoneNumber)=>{
+                // instantiate a headers object
+                var myHeaders = new Headers();
+                // add content type header to object
+                myHeaders.append("Content-Type", "application/json");
+                // using built in JSON utility package turn object to string and store in a variable
+                var raw = JSON.stringify({"title": title, "description": description, "email": email, "number": phoneNumber});
+                // create a JSON object with parameters for API call and store in a variable
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                };
+                // make API call with parameters and use promises to get response
+                fetch("YOUR-API-INVOKE-URL", requestOptions)
+                .then(response => response.text())
+                .then(result => alert(JSON.parse(result).body))
+                .catch(error => console.log('error', error));
+            }
+        </script>
+
+        <body>
+            <h1> Create a Listing </h1>
+            <form>
+                <label>Title :</label>
+                <input type="text" id="title" required>
+                <label>Description :</label>
+                <input type="text" id="description" required>
+                <label>Email :</label>
+                <input type="text" id="email" required>
+                <label>Phone Number :</label>
+                <input type="text" id="phone-number" required>
+                <!-- set button onClick method to call function we defined passing input values as parameters -->
+                <button type="button" onclick="createListing(
+                    document.getElementById('title').value, 
+                    document.getElementById('description').value, 
+                    document.getElementById('email').value, 
+                    document.getElementById('phone-number').value);">Create Listing</button>
+            </form>
+        </body>
+    </html>
