@@ -22,7 +22,7 @@
                     redirect: 'follow'
                 };
                 // make API call with parameters and use promises to get response
-                fetch("YOUR-API-INVOKE-URL", requestOptions)
+                fetch("CHANGE THIS TO THE API INVOKE URL", requestOptions)
                 .then(response => response.text())
                 .then(result => alert(JSON.parse(result).body))
                 .catch(error => console.log('error', error));
@@ -37,15 +37,16 @@
                 <label>Description :</label>
                 <input type="text" id="description" required>
                 <label>Email :</label>
-                <input type="text" id="email" required>
+                <input type="email" id="contact_email" required>
                 <label>Phone Number :</label>
-                <input type="text" id="phone-number" required>
+                <input type="tel" id="contact_number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                required>
                 <!-- set button onClick method to call function we defined passing input values as parameters -->
                 <button type="button" onclick="createListing(
                     document.getElementById('title').value, 
                     document.getElementById('description').value, 
-                    document.getElementById('email').value, 
-                    document.getElementById('phone-number').value);">Create Listing</button>
+                    document.getElementById('contact_email').value, 
+                    document.getElementById('contact_number').value);">Create Listing</button>
             </form>
         </body>
     </html>
