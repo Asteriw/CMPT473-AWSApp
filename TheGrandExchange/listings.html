@@ -3,6 +3,7 @@
         <head>
             <title> Project - Group (6): The Grand Exchange </title>
             <link rel="stylesheet" type="text/css" href="style.css" />
+            <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         </head>
         
         <script>
@@ -19,7 +20,7 @@
                     redirect: 'follow'
                 };
                 // make API call with parameters and use promises to get response
-                result = await fetch("https://a90jbgdg3a.execute-api.us-east-1.amazonaws.com/dev", requestOptions);
+                result = await fetch("https://j6241nxwkg.execute-api.us-east-1.amazonaws.com/dev/", requestOptions);
                 return result;
             }
 
@@ -58,22 +59,23 @@
 
         <body onload="printListings()">
             <div class="header">
-                <h1> Current Listings </h1>
+                <h1>The Grand Exchange</h1>
             </div>
 
             <div class="row">
                 <div class="col-3 col-s-3 menu">
                     <ul>
-                        <li><a href='index.html'> Home </a> </li>
-                        <li><a href='about.html'> About </a> </li>
-                        <li><a href='contact.html'> Contact </a> </li>
-                        <li><a href='login.html'> User Login </a> </li>
-                        <li><a href='listings.html'> Listings </a> </li>
-                    </ul>
+                        <a href='index.html'><li> Home </li> </a> 
+                        <a href='about.html'><li> About </li> </a> 
+                        <a href='contact.html'><li> Contact </li> </a> 
+                        <a href='login.html'><li> User Login </li> </a> 
+                        <a href='listings.html'><li> Listings </li> </a> 
+                      </ul>
                 </div>
             
 
                 <div class="col-6 col-s-9">
+                    <h2>Current Listings</h2>
                     <table id="listings">
                         <a href="getListings">Create Listing</a>
                         <tr>
@@ -97,7 +99,7 @@
             </div>
 
             <div class="footer">
-                <p> The provided CSS responds to different window sizes and device sizes. While you are not required to work on the asthetics of your project for grade, you may want to improve it if you are trying to build a real web system. </p>
+                <p> This web service is our final project for CMPT 474: Web Systems Architecture </p>
             </div>
         </body>
 
