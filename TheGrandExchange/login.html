@@ -21,19 +21,29 @@
             body: raw,
             redirect: 'follow'
         };
+        let access_token = "";
         // make API call with parameters and use promises to get response
         let res = fetch("https://vsn4nf9kvh.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
         res.then(function(result){
-          console.log(result);
-          if(result.status == "200"){
+          // console.log(result.body);
+          // if(result.status == "200"){
+          //   alert("log in Success");
+          // }
+          return result.json();
+        }).then(function(data){
+          console.log(data)
+          // console.log(data["data"]["access_token"]);
+          if(data["success"] == true){
             alert("log in Success");
+            access_token = data["data"]["access_token"];
           }
-          
+          else{
+            alert("log in fail, the username or password is invalid.");
+          }
+
         })
-        // .console(result)
-        // .then(response => response.text())
-        // .then(result => alert(JSON.parse(result).))
-        // .catch(error => console.log('error', error));
+
+        return access_token;
     }
 </script>
 </head>
