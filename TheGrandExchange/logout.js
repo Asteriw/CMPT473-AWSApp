@@ -15,7 +15,7 @@ var logoutAPI = (token)=>{
     };
     let access_token = "";
     // make API call with parameters and use promises to get response
-    let res = fetch("https://91ru9w2qqj.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
+    let res = fetch("https://6yya32xzii.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
     res.then(function(result){
         // console.log(result.body);
         // if(result.status == "200"){
