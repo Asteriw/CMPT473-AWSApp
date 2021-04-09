@@ -7,13 +7,13 @@
 
 <script>
     // define the callAPI function that takes a first name and last name as parameters
-    var callAPI = (firstName,lastName)=>{
+    var callAPI = (username,password)=>{
         // instantiate a headers object
         var myHeaders = new Headers();
         // add content type header to object
         myHeaders.append("Content-Type", "application/json");
         // using built in JSON utility package turn object to string and store in a variable
-        var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
+        var raw = JSON.stringify({"username":username,"password":password});
         // create a JSON object with parameters for API call and store in a variable
         var requestOptions = {
             method: 'POST',
@@ -22,10 +22,18 @@
             redirect: 'follow'
         };
         // make API call with parameters and use promises to get response
-        fetch("https://scfdp8s0n8.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
-        .then(response => response.text())
-        .then(result => alert(JSON.parse(result).body))
-        .catch(error => console.log('error', error));
+        let res = fetch("https://vsn4nf9kvh.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
+        res.then(function(result){
+          console.log(result);
+          if(result.status == "200"){
+            alert("log in Success");
+          }
+          
+        })
+        // .console(result)
+        // .then(response => response.text())
+        // .then(result => alert(JSON.parse(result).))
+        // .catch(error => console.log('error', error));
     }
 </script>
 </head>
@@ -51,10 +59,10 @@
      <form>
      <table>
      <tr>
-        <td><label> First Name: </label></td><td> <input type="text" id="username"></td> 
+        <td><label> Username: </label></td><td> <input type="text" id="username"></td> 
      </tr>
      <tr>
-        <td><label> Last Name: </label></td><td> <input type="password" id="password" minlength="10"></td>
+        <td><label>Password: </label></td><td> <input type="password" id="password" minlength="10"></td>
      </tr>
      <tr>
         <td>&nbsp;</td><td> <input type="checkbox" onclick="ShowPassword()">Show Password</td>
