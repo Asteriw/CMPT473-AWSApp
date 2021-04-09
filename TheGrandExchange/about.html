@@ -4,6 +4,7 @@
 <title> Project - Group (?): Project Title </title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<script src="logout.js"></script>
 </head>
 <body>
 <div class="header">
@@ -16,14 +17,21 @@
       <a href='index.html'><li> Home </li> </a> 
       <a href='about.html'><li> About </li> </a>
       <a href='contact.html'><li> Contact </li> </a> 
-      <a href='listings.html'><li> Listings </li> </a>
-      <a id='if-part' style='display: none;' href='login.html'><li> Logout </li> </a> 
+      <a id="ge-listings" style='display: none;' href='listings.html'><li> Listings </li> </a>
+      <a onclick='logoutAPI(localStorage.getItem("access_token"))' id='if-part' style='display: none;' href='login.html'><li> Logout </li> </a> 
       <a id='else-part' style='display: none;' href='login.html'><li> Login </li> </a> 
     </ul>
   </div>
 
   <script>
-    console.log(localStorage.getItem("access_token"));
+    var listings;
+    if (localStorage.getItem("access_token")) {
+      listings = document.getElementById("ge-listings");
+      listings.style.display = "block";
+    }
+  </script>
+
+  <script>
     var button;
     if(localStorage.getItem("access_token")) {
       button = document.getElementById('if-part');

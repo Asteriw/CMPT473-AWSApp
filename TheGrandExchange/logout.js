@@ -1,6 +1,6 @@
-window.onload = function() {
-    document.getElementById("if-part").addEventListener("click", logoutAPI(localStorage.getItem("access_token")), true);
-}
+// window.onload = function() {
+//     document.getElementById("if-part").addEventListener("click", logoutAPI(localStorage.getItem("access_token")), true);
+// }
 var logoutAPI = (token)=>{
     console.log("Logging out")
     // instantiate a headers object
@@ -22,16 +22,5 @@ var logoutAPI = (token)=>{
         //   alert("log in Success");
         // }
         return result.json();
-    }).then(function(data){
-        console.log(data)
-        console.log(data["success"]);
-        // console.log(data["data"]["access_token"]);
-        if(data["success"] == true){
-        alert("Successfully logged out!")
-        }
-        else {
-            alert("Logout failed!")
-        }
     })
-    
 }

@@ -64,28 +64,35 @@
             </div>
 
             <div class="row">
-                    <div class="col-3 col-s-3 menu">
-                      <ul>
-                        <a href='index.html'><li> Home </li> </a> 
-                        <a href='about.html'><li> About </li> </a>
-                        <a href='contact.html'><li> Contact </li> </a> 
-                        <a href='listings.html'><li> Listings </li> </a>
-                        <a id='if-part' style='display: none;' href='login.html'><li> Logout </li> </a> 
-                        <a id='else-part' style='display: none;' href='login.html'><li> Login </li> </a> 
-                      </ul>
-                    </div>
-                  
-                    <script>
-                      console.log(localStorage.getItem("access_token"));
-                      var button;
-                      if(localStorage.getItem("access_token")) {
-                        button = document.getElementById('if-part');
-                      }
-                      else {
-                        button = document.getElementById('else-part');
-                      }
-                      button.style.display = "block";
-                    </script>
+                <div class="col-3 col-s-3 menu">
+                  <ul>
+                    <a href='index.html'><li> Home </li> </a> 
+                    <a href='about.html'><li> About </li> </a>
+                    <a href='contact.html'><li> Contact </li> </a> 
+                    <a id="ge-listings" style='display: none;' href='listings.html'><li> Listings </li> </a>
+                    <a onclick='logoutAPI(localStorage.getItem("access_token"))' id='if-part' style='display: none;' href='login.html'><li> Logout </li> </a> 
+                    <a id='else-part' style='display: none;' href='login.html'><li> Login </li> </a> 
+                  </ul>
+                </div>
+              
+                <script>
+                  var listings;
+                  if (localStorage.getItem("access_token")) {
+                    listings = document.getElementById("ge-listings");
+                    listings.style.display = "block";
+                  }
+                </script>
+              
+                <script>
+                  var button;
+                  if(localStorage.getItem("access_token")) {
+                    button = document.getElementById('if-part');
+                  }
+                  else {
+                    button = document.getElementById('else-part');
+                  }
+                  button.style.display = "block";
+                </script>
             
 
                 <div class="col-6 col-s-9">
