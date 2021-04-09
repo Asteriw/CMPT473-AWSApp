@@ -19,8 +19,8 @@
       <a href='about.html'><li> About </li> </a>
       <a href='contact.html'><li> Contact </li> </a> 
       <a href='listings.html'><li> Listings </li> </a>
-      <a id='if-part' style='visibility: hidden;' href='login.html'><li> Logout </li> </a> 
-      <a id='else-part' style='visibility: hidden;' href='login.html'><li> Login </li> </a> 
+      <a onclick='logoutAPI(localStorage.getItem("access_token"))' id='if-part' style='display: none;' href='login.html'><li> Logout </li> </a> 
+      <a id='else-part' style='display: none;' href='login.html'><li> Login </li> </a> 
     </ul>
   </div>
 
@@ -33,7 +33,7 @@
     else {
       button = document.getElementById('else-part');
     }
-    button.style.visibility = 'visible';
+    button.style.display = "block";
   </script>
 
   <div class="col-6 col-s-9">
