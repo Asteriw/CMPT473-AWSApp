@@ -7,6 +7,7 @@
         </head>
         
         <script>
+            console.log(localStorage.getItem("access_token"));
             // define the createListing function that takes a first name and last name as parameters
             var getListings = async () => {
                 // instantiate a headers object
@@ -68,10 +69,22 @@
                         <a href='index.html'><li> Home </li> </a> 
                         <a href='about.html'><li> About </li> </a> 
                         <a href='contact.html'><li> Contact </li> </a> 
-                        <a href='login.html'><li> User Login </li> </a> 
-                        <a href='listings.html'><li> Listings </li> </a> 
+                        <a href='listings.html'><li> Listings </li> </a>
+                        <a id='if-part' style='visibility: hidden;' href='login.html'><li> Logout </li> </a> 
+                        <a id='else-part' style='visibility: hidden;' href='login.html'><li> Login </li> </a> 
                       </ul>
                 </div>
+                <script>
+                    console.log(localStorage.getItem("access_token"));
+                    var button;
+                    if(localStorage.getItem("access_token")) {
+                      button = document.getElementById('if-part');
+                    }
+                    else {
+                      button = document.getElementById('else-part');
+                    }
+                    button.style.visibility = 'visible';
+                  </script>
             
 
                 <div class="col-6 col-s-9">

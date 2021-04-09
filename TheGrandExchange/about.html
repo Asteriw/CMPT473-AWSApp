@@ -16,10 +16,25 @@
         <a href='index.html'><li> Home </li> </a> 
         <a href='about.html'><li> About </li> </a> 
         <a href='contact.html'><li> Contact </li> </a> 
-        <a href='login.html'><li> User Login </li> </a> 
-        <a href='listings.html'><li> Listings </li> </a> 
+        <a id="listings" style='visibility: hidden;' href='listings.html'><li> Listings </li> </a> 
+        <a id='if-part' style='visibility: hidden;' href='index.html'><li> Logout </li> </a> 
+        <a id='else-part' style='visibility: hidden;' href='login.html'><li> Login </li> </a> 
       </ul>
   </div>
+
+  <script>
+    console.log(localStorage.getItem("access_token"));
+    var button;
+    var listings;
+    if(localStorage.getItem("access_token")) {
+      button = document.getElementById('if-part');
+      listings = document.getElementById("listings");
+    }
+    else {
+      button = document.getElementById('else-part');
+    }
+    button.style.visibility = 'visible';
+  </script>
 
   <div class="col-6 col-s-9">
     <h2> About </h2>

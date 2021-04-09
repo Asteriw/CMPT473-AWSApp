@@ -21,7 +21,7 @@
             body: raw,
             redirect: 'follow'
         };
-        let access_token = "";
+        var access_token = "";
         // make API call with parameters and use promises to get response
         let res = fetch("https://vsn4nf9kvh.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
         res.then(function(result){
@@ -36,13 +36,14 @@
           if(data["success"] == true){
             alert("log in Success");
             access_token = data["data"]["access_token"];
+            localStorage.setItem("access_token", access_token);
+            location.href = "listings.html";
           }
           else{
             alert("log in fail, the username or password is invalid.");
           }
 
         })
-
         return access_token;
     }
 </script>
@@ -58,8 +59,8 @@
         <a href='index.html'><li> Home </li> </a> 
         <a href='about.html'><li> About </li> </a> 
         <a href='contact.html'><li> Contact </li> </a> 
-        <a href='login.html'><li> User Login </li> </a> 
         <a href='listings.html'><li> Listings </li> </a> 
+        <a href='login.html'><li> User Login </li> </a> 
       </ul>
   </div>
 
